@@ -1,0 +1,22 @@
+{% extends "base.html" %}                  <!-- In line 1, we extend base.html as we did in the Hello, World! app tutorial. I’ve added some more styling to this file to include a navigation bar and so that all the content is contained in a Bootstrap container.-->
+{% load static %}             <!--  On line 2, we include a {% load static %} tag to include static files such as images. Remember back in the section on Django models, when you created the Project model. One of its attributes was a filepath. -->
+{% block page_content %}
+<h1>Projects</h1>
+<div class="row">
+{% for project in projects %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src="{% static project.image %}">      <!-- On line 9, we include our project image. Inside the src attribute, we add the code {% static project.image %}. This tells Django to look inside the static files to find a file matching project.image. -->
+            <div class="card-body">
+                <h5 class="card-title">{{ project.title }}</h5>
+                <p class="card-text">{{ project.description }}</p>         <!-- The final point that we need to highlight is the link on line 13. This is the link to our project_detail page. Accessing URLs in Django is similar to accessing static files. The code for the URL has the following form: -->
+                <a href="{% url 'project_detail' project.pk %}"
+                   class="btn btn-primary">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
