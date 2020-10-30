@@ -1,5 +1,6 @@
 from django.shortcuts import render
-import projects.models 
+## import projects.models 
+from projects.models import Project
 
 ## A database query returns a collection of all objects that match the query, known as a Queryset. In this case, you want all objects in the table, so it will return a collection of all projects
 def project_index(request):

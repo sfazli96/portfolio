@@ -18,5 +18,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("projects/", include("projects.urls")),
+    path("projects/", include("projects.urls")),    ## We hook hese URLs up to the project URLs
 ]
+
+## This line of code includes all the URLs in the projects app but means they are accessed when prefixed by projects/. There are now two full URLs that can be accessed with our project:
+## localhost:8000/projects: The project index page
+## localhost:8000/projects/3: The detail view for the project with pk=3
