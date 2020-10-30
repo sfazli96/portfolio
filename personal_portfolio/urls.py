@@ -19,6 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("projects/", include("projects.urls")),    ## We hook hese URLs up to the project URLs
+    path("blog/", include("blog.urls")),
 ]
 
 ## This line of code includes all the URLs in the projects app but means they are accessed when prefixed by projects/. There are now two full URLs that can be accessed with our project:
